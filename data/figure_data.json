@@ -1,0 +1,480 @@
+{
+  "meta": {
+    "title": "Using Grover's Algorithm to Find Anomalies and Outliers in Financial Markets with Classical Preprocessing",
+    "n_stocks": 20,
+    "system_qubits": 5,
+    "basis_states": 32,
+    "shots": 1024,
+    "noise": "depolarizing_error(0.01) on H and X gates",
+    "simulator": "qiskit-aer AerSimulator",
+    "classical_outlier_threshold": 2.0,
+    "quantum_adjusted_threshold": 2.25
+  },
+  "raw_metrics": [
+    {
+      "symbol": "AAPL",
+      "trailingPE": 34.5857,
+      "returnOnEquity": 1.3652,
+      "dividendYield": 0.44
+    },
+    {
+      "symbol": "MSFT",
+      "trailingPE": 30.5036,
+      "returnOnEquity": 0.3429,
+      "dividendYield": 0.87
+    },
+    {
+      "symbol": "GOOG",
+      "trailingPE": 20.3669,
+      "returnOnEquity": 0.3291,
+      "dividendYield": 0.48
+    },
+    {
+      "symbol": "AMZN",
+      "trailingPE": 35.1196,
+      "returnOnEquity": 0.2429,
+      "dividendYield": NaN
+    },
+    {
+      "symbol": "IBM",
+      "trailingPE": 38.4829,
+      "returnOnEquity": 0.2406,
+      "dividendYield": 2.6
+    },
+    {
+      "symbol": "ORCL",
+      "trailingPE": 33.2793,
+      "returnOnEquity": 1.0374,
+      "dividendYield": 1.08
+    },
+    {
+      "symbol": "INTC",
+      "trailingPE": NaN,
+      "returnOnEquity": -0.1789,
+      "dividendYield": 2.24
+    },
+    {
+      "symbol": "NVDA",
+      "trailingPE": 36.6956,
+      "returnOnEquity": 1.1918,
+      "dividendYield": 0.04
+    },
+    {
+      "symbol": "ADBE",
+      "trailingPE": 35.1371,
+      "returnOnEquity": 0.3631,
+      "dividendYield": NaN
+    },
+    {
+      "symbol": "CSCO",
+      "trailingPE": 26.6009,
+      "returnOnEquity": 0.2002,
+      "dividendYield": 2.64
+    },
+    {
+      "symbol": "CRM",
+      "trailingPE": 43.3183,
+      "returnOnEquity": 0.1026,
+      "dividendYield": 0.59
+    },
+    {
+      "symbol": "TXN",
+      "trailingPE": 34.1519,
+      "returnOnEquity": 0.284,
+      "dividendYield": 2.92
+    },
+    {
+      "symbol": "QCOM",
+      "trailingPE": 16.3279,
+      "returnOnEquity": 0.4197,
+      "dividendYield": 2.19
+    },
+    {
+      "symbol": "HPQ",
+      "trailingPE": 10.3004,
+      "returnOnEquity": NaN,
+      "dividendYield": 3.86
+    },
+    {
+      "symbol": "DELL",
+      "trailingPE": 14.2226,
+      "returnOnEquity": NaN,
+      "dividendYield": 2.32
+    },
+    {
+      "symbol": "ACN",
+      "trailingPE": 27.3149,
+      "returnOnEquity": 0.2683,
+      "dividendYield": 1.77
+    },
+    {
+      "symbol": "AMD",
+      "trailingPE": 96.4,
+      "returnOnEquity": 0.0289,
+      "dividendYield": NaN
+    },
+    {
+      "symbol": "AVGO",
+      "trailingPE": 87.3982,
+      "returnOnEquity": 0.1484,
+      "dividendYield": 1.28
+    },
+    {
+      "symbol": "SAP",
+      "trailingPE": 90.3728,
+      "returnOnEquity": 0.0706,
+      "dividendYield": 0.91
+    },
+    {
+      "symbol": "ADP",
+      "trailingPE": 30.5719,
+      "returnOnEquity": 0.8372,
+      "dividendYield": 2.03
+    }
+  ],
+  "zscores": {
+    "trailingPE": {
+      "AAPL": -0.1769,
+      "MSFT": -0.3497,
+      "GOOG": -0.7788,
+      "AMZN": -0.1543,
+      "IBM": -0.0119,
+      "ORCL": -0.2322,
+      "INTC": -0.1953,
+      "NVDA": -0.0876,
+      "ADBE": -0.1536,
+      "CSCO": -0.5149,
+      "CRM": 0.1927,
+      "TXN": -0.1953,
+      "QCOM": -0.9498,
+      "HPQ": -1.205,
+      "DELL": -1.0389,
+      "ACN": -0.4847,
+      "AMD": 2.4398,
+      "AVGO": 2.0587,
+      "SAP": 2.1846,
+      "ADP": -0.3468
+    },
+    "returnOnEquity": {
+      "AAPL": 2.4916,
+      "MSFT": -0.1265,
+      "GOOG": -0.1619,
+      "AMZN": -0.3826,
+      "IBM": -0.3886,
+      "ORCL": 1.6521,
+      "INTC": -1.4629,
+      "NVDA": 2.0474,
+      "ADBE": -0.0747,
+      "CSCO": -0.492,
+      "CRM": -0.742,
+      "TXN": -0.2775,
+      "QCOM": 0.0701,
+      "HPQ": -0.2975,
+      "DELL": -0.2975,
+      "ACN": -0.3176,
+      "AMD": -0.9306,
+      "AVGO": -0.6245,
+      "SAP": -0.8239,
+      "ADP": 1.1393
+    },
+    "dividendYield": {
+      "AAPL": -1.3121,
+      "MSFT": -0.8565,
+      "GOOG": -1.2697,
+      "AMZN": 0.0969,
+      "IBM": 0.9762,
+      "ORCL": -0.634,
+      "INTC": 0.5948,
+      "NVDA": -1.7358,
+      "ADBE": 0.0969,
+      "CSCO": 1.0186,
+      "CRM": -1.1531,
+      "TXN": 1.3152,
+      "QCOM": 0.5419,
+      "HPQ": 2.3111,
+      "DELL": 0.6796,
+      "ACN": 0.0969,
+      "AMD": 0.0969,
+      "AVGO": -0.4222,
+      "SAP": -0.8141,
+      "ADP": 0.3724
+    }
+  },
+  "classical_outlier_flags": {
+    "trailingPE": [
+      "AMD",
+      "SAP",
+      "AVGO"
+    ],
+    "returnOnEquity": [
+      "AAPL",
+      "NVDA"
+    ],
+    "dividendYield": [
+      "HPQ"
+    ]
+  },
+  "composite_outliers": [
+    "AAPL",
+    "NVDA",
+    "HPQ",
+    "AMD",
+    "AVGO",
+    "SAP"
+  ],
+  "grover_counts_per_metric": [
+    {
+      "symbol": "AAPL",
+      "PE_Counts": 20,
+      "ROE_Counts": 231,
+      "Dividend_Counts": 28,
+      "Total": 279
+    },
+    {
+      "symbol": "HPQ",
+      "PE_Counts": 6,
+      "ROE_Counts": 21,
+      "Dividend_Counts": 248,
+      "Total": 275
+    },
+    {
+      "symbol": "AMD",
+      "PE_Counts": 216,
+      "ROE_Counts": 19,
+      "Dividend_Counts": 28,
+      "Total": 263
+    },
+    {
+      "symbol": "AVGO",
+      "PE_Counts": 218,
+      "ROE_Counts": 22,
+      "Dividend_Counts": 22,
+      "Total": 262
+    },
+    {
+      "symbol": "NVDA",
+      "PE_Counts": 11,
+      "ROE_Counts": 224,
+      "Dividend_Counts": 22,
+      "Total": 257
+    },
+    {
+      "symbol": "SAP",
+      "PE_Counts": 216,
+      "ROE_Counts": 13,
+      "Dividend_Counts": 25,
+      "Total": 254
+    },
+    {
+      "symbol": "QCOM",
+      "PE_Counts": 19,
+      "ROE_Counts": 17,
+      "Dividend_Counts": 38,
+      "Total": 74
+    },
+    {
+      "symbol": "ORCL",
+      "PE_Counts": 15,
+      "ROE_Counts": 23,
+      "Dividend_Counts": 29,
+      "Total": 67
+    },
+    {
+      "symbol": "GOOG",
+      "PE_Counts": 15,
+      "ROE_Counts": 19,
+      "Dividend_Counts": 25,
+      "Total": 59
+    },
+    {
+      "symbol": "AMZN",
+      "PE_Counts": 13,
+      "ROE_Counts": 19,
+      "Dividend_Counts": 25,
+      "Total": 57
+    },
+    {
+      "symbol": "ADP",
+      "PE_Counts": 10,
+      "ROE_Counts": 21,
+      "Dividend_Counts": 24,
+      "Total": 55
+    },
+    {
+      "symbol": "CSCO",
+      "PE_Counts": 10,
+      "ROE_Counts": 21,
+      "Dividend_Counts": 24,
+      "Total": 55
+    },
+    {
+      "symbol": "ACN",
+      "PE_Counts": 16,
+      "ROE_Counts": 17,
+      "Dividend_Counts": 22,
+      "Total": 55
+    },
+    {
+      "symbol": "IBM",
+      "PE_Counts": 7,
+      "ROE_Counts": 17,
+      "Dividend_Counts": 29,
+      "Total": 53
+    },
+    {
+      "symbol": "ADBE",
+      "PE_Counts": 17,
+      "ROE_Counts": 17,
+      "Dividend_Counts": 19,
+      "Total": 53
+    },
+    {
+      "symbol": "CRM",
+      "PE_Counts": 9,
+      "ROE_Counts": 17,
+      "Dividend_Counts": 26,
+      "Total": 52
+    },
+    {
+      "symbol": "MSFT",
+      "PE_Counts": 12,
+      "ROE_Counts": 14,
+      "Dividend_Counts": 23,
+      "Total": 49
+    },
+    {
+      "symbol": "DELL",
+      "PE_Counts": 13,
+      "ROE_Counts": 12,
+      "Dividend_Counts": 23,
+      "Total": 48
+    },
+    {
+      "symbol": "TXN",
+      "PE_Counts": 7,
+      "ROE_Counts": 20,
+      "Dividend_Counts": 20,
+      "Total": 47
+    },
+    {
+      "symbol": "INTC",
+      "PE_Counts": 7,
+      "ROE_Counts": 13,
+      "Dividend_Counts": 25,
+      "Total": 45
+    }
+  ],
+  "quantum_counting_histograms": {
+    "trailingPE": {
+      "000": 33,
+      "001": 20,
+      "010": 25,
+      "011": 410,
+      "100": 56,
+      "101": 440,
+      "110": 22,
+      "111": 18
+    },
+    "returnOnEquity": {
+      "000": 30,
+      "001": 23,
+      "010": 37,
+      "011": 356,
+      "100": 216,
+      "101": 301,
+      "110": 40,
+      "111": 21
+    },
+    "dividendYield": {
+      "000": 60,
+      "001": 17,
+      "010": 34,
+      "011": 198,
+      "100": 462,
+      "101": 186,
+      "110": 46,
+      "111": 21
+    }
+  },
+  "marked_states_estimate": {
+    "trailingPE": {
+      "peak_outcome": "101",
+      "estimated_marked": 27.31,
+      "of": 32
+    },
+    "returnOnEquity": {
+      "peak_outcome": "011",
+      "estimated_marked": 16.0,
+      "of": 32
+    },
+    "dividendYield": {
+      "peak_outcome": "100",
+      "estimated_marked": 4.69,
+      "of": 32
+    }
+  },
+  "composite_experiment_top_counts": [
+    {
+      "state": "00000",
+      "index": 0,
+      "count": 279
+    },
+    {
+      "state": "01101",
+      "index": 13,
+      "count": 275
+    },
+    {
+      "state": "10000",
+      "index": 16,
+      "count": 263
+    },
+    {
+      "state": "10001",
+      "index": 17,
+      "count": 262
+    },
+    {
+      "state": "00111",
+      "index": 7,
+      "count": 257
+    },
+    {
+      "state": "10010",
+      "index": 18,
+      "count": 254
+    },
+    {
+      "state": "01100",
+      "index": 12,
+      "count": 74
+    }
+  ],
+  "dynamic_threshold_iterations": [
+    {
+      "iteration": 0,
+      "threshold": 1.5,
+      "estimated_marked": 16.0
+    },
+    {
+      "iteration": 1,
+      "threshold": 1.75,
+      "estimated_marked": 27.31
+    },
+    {
+      "iteration": 2,
+      "threshold": 2.0,
+      "estimated_marked": 27.31
+    },
+    {
+      "iteration": 3,
+      "threshold": 2.25,
+      "estimated_marked": 4.69
+    },
+    {
+      "iteration": 4,
+      "threshold": 2.25,
+      "estimated_marked": 4.69
+    }
+  ]
+}

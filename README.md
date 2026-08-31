@@ -30,6 +30,7 @@ with Classical Preprocessing.*
 | `Full_QuantumV1.ipynb` | Earlier version of the full-quantum notebook |
 | `newCode.py` | Standalone script version of the pipeline |
 | `tech_stock_data.csv` | Preprocessed metrics produced by the classical notebook |
+| `data/` | Extracted plot numbers, gate details, and original figures (for write-ups) |
 
 ## Running
 
