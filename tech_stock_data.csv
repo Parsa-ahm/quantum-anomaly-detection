@@ -1,0 +1,21 @@
+symbol,shortName,industry,sector,trailingPE,forwardPE,priceToBook,dividendYield,returnOnEquity
+AAPL,Apple Inc.,Consumer Electronics,Technology,34.585712,26.220215,49.09644,0.44,1.3652
+MSFT,Microsoft Corporation,Software - Infrastructure,Technology,30.503632,25.280268,9.2832575,0.87,0.34291
+GOOG,Alphabet Inc.,Internet Content & Information,Communication Services,20.366915,18.29609,6.150928,0.48,0.32908002
+AMZN,"Amazon.com, Inc.",Internet Retail,Consumer Cyclical,35.119564,31.521952,7.1810637,,0.24290001
+IBM,International Business Machines,Information Technology Services,Technology,38.482864,23.28558,8.380597,2.6,0.24057
+ORCL,Oracle Corporation,Software - Infrastructure,Technology,33.279343,19.80028,22.98849,1.08,1.03741
+INTC,Intel Corporation,Semiconductors,Technology,,20.142887,0.8522464,2.24,-0.17891
+NVDA,NVIDIA Corporation,Semiconductors,Technology,36.69558,26.18568,33.287567,0.04,1.1917701
+ADBE,Adobe Inc.,Software - Application,Technology,35.13714,21.133577,13.578508,,0.36313
+CSCO,"Cisco Systems, Inc.",Communication Equipment,Technology,26.600878,15.551282,5.2978687,2.64,0.20019
+CRM,"Salesforce, Inc.",Software - Application,Technology,43.318333,24.753334,4.332583,0.59,0.10258
+TXN,Texas Instruments Incorporated,Semiconductors,Technology,34.151924,30.20238,9.57152,2.92,0.28395998
+QCOM,QUALCOMM Incorporated,Semiconductors,Technology,16.327938,12.376124,6.224452,2.19,0.41968
+HPQ,HP Inc.,Computer Hardware,Technology,10.30036,7.954167,-25.229074,3.86,
+DELL,Dell Technologies Inc.,Computer Hardware,Technology,14.22257,9.653192,-42.984364,2.32,
+ACN,Accenture plc,Information Technology Services,Technology,27.31491,23.179817,6.983278,1.77,0.2683
+AMD,"Advanced Micro Devices, Inc.",Semiconductors,Technology,96.4,18.901962,2.716105,,0.02893
+AVGO,Broadcom Inc.,Semiconductors,Technology,87.39815,30.596434,3.1877205,1.28,0.14845
+SAP,SAP  SE,Software - Application,Technology,90.372826,38.425186,6.658879,0.91,0.07062
+ADP,"Automatic Data Processing, Inc.",Software - Application,Technology,30.571873,27.0,23.516827,2.03,0.83716005
