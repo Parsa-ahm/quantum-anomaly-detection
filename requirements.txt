@@ -1,0 +1,10 @@
+qiskit==2.0.3
+qiskit-aer==0.17.2
+pandas==3.0.5
+numpy==2.4.6
+scipy==1.17.1
+matplotlib==3.11.1
+seaborn==0.13.2
+pylatexenc==2.11
+jupyter==1.1.1
+yfinance>=0.2.55
